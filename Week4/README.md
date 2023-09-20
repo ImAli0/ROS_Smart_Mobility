@@ -18,4 +18,3 @@
 ## Remapping
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/39f6a7ab-f079-4306-b73d-414d9d488d39)
 
-![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/37a157b6-8033-4f74-a927-a46dbafb7de5)
