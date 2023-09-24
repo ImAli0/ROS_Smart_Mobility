@@ -121,6 +121,12 @@
 ### Set the default logger level
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/5ae83b97-5b19-44c1-849c-5e4890c9c60f)
 
+## Launching nodes
+### Running a Launch File
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/bf712c39-df2f-49c1-a5bb-9d1f1a9f6f62)
+
+### Control the Turtlesim Nodes
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/3e5259e2-402c-4524-a74e-dd8efe59e293)
 
 
 
