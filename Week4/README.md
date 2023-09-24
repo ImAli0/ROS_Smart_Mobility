@@ -50,12 +50,31 @@
 ### ros2 topic pub
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/ee78aeed-7a6a-488f-99c8-f40863b18ae7)
 
+## Understanding services
+### ros2 service list
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/13bc0357-abbf-4226-bcd5-9b7e698eb59a)
 
+### ros2 service type
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/65dd5d81-abe7-4e4b-af6a-e4879b467cb8)
 
+### ros2 service list -t
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/efe74636-f4d9-41a9-8def-348dd40c5ce2)
 
+### ros2 service find 
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/ff035d47-cde3-4efe-b47c-3599ff86a84f)
 
+### ros2 interface show 
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/ccd12afc-a9d9-482b-b5f9-93a9ce0cd6d1)
 
+### ros2 service call
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/96cf4b78-b08b-4501-abfe-04824136b152)
 
+## Understanding parameters
+### ros2 param list
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/3199f87d-a033-4ebe-9ca0-565b12a80347)
+
+### ros2 param get
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/85405964-abda-4789-aa8e-273545fef7f1)
 
 
 
