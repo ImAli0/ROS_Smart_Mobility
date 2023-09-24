@@ -76,18 +76,50 @@
 ### ros2 param get
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/85405964-abda-4789-aa8e-273545fef7f1)
 
+### ros2 param set
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/11254d96-449f-48e8-9b8c-ce7ea1030c31)
 
+### ros2 param dump
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/6b640548-f5df-4c86-ad2f-ac1805b049fa)
 
+### ros2 param load
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/78982129-f8e6-4391-b58b-80905581caa6)
 
+### Load parameter file on node startup
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/1d28e93e-d47c-42e6-916f-c8a010b693d4)
 
+## Understanding actions
+### Use actions
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/958c60dd-f221-4980-9d7f-0fa9f8c457a8)
 
+### ros2 node info
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/df9e0dd3-a257-44fa-a356-42851ef5ef9e)
 
+### ros2 action list
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/37cd2268-2b4b-4453-92ee-aea6e537c155)
 
+### ros2 action list -t
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/68410d51-772e-4e6a-acea-869f88c413c3)
 
+### ros2 action info
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/79c1a7f4-6907-4e13-9bb6-e880d6b3e6af)
 
+### ros2 interface show
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/8f169e8a-6e8c-4a88-9081-f6556ac9b84b)
 
+### ros2 action send_goal
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/15914026-114b-40a8-a51e-1c78b3012272)
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/b1f42a2d-207a-46ed-b51a-71f58478ed1c)
 
+## Using rqt_console to view logs
+### Setup
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/64223a4b-c214-4bbc-b287-b44429b8535a)
 
+### Messages on rqt_console
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/81f89c2c-8feb-4a8d-ac2f-999046ea0c7d)
+
+### Set the default logger level
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/5ae83b97-5b19-44c1-849c-5e4890c9c60f)
 
 
 
