@@ -128,10 +128,21 @@
 ### Control the Turtlesim Nodes
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/3e5259e2-402c-4524-a74e-dd8efe59e293)
 
+## Recording and playing back data
+### Choose a topic
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/25076fc9-598f-47c3-9918-a0b75efd909f)
 
+### ros2 bag record
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/3c3ae3a6-27df-4f87-8b07-86198a874b41)
 
+### Record multiple topics
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/32c974bd-ddad-4ccd-b9d7-b546bb9cc53c)
 
+### ros2 bag info 
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/5a4e31d2-0f6e-426a-8827-1e38fc87fd90)
 
+### ros2 bag play
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/a9cf628e-fdd3-403b-b3bd-8204bf4741e5)
 
 
 
