@@ -20,63 +20,78 @@ rqt is a graphical user interface (GUI) tool for ROS 2. Everything done in rqt c
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/4288e874-69be-4ff3-8737-560e05148cf3)
 
 ### Trying the set_pen service
-The values for r, g and b, which are between 0 and 255, set the color of the pen turtle1 draws with, and width sets the thickness of the line.
+The values for r, g, and b, which are between 0 and 255, set the color of the pen turtle1 draws with, and width sets the thickness of the line.
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/a8ffd85f-e9e4-47ba-8fb7-d2e988893145)
 
 ### Remapping
+Remaping the teleoperation node to control different turtles.
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/39f6a7ab-f079-4306-b73d-414d9d488d39)
 
 ## Understanding nodes
 ### ros2 node list
+Listing nodes in the ROS2 system.
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/b3d629f5-37a9-4f07-8674-c35f3150b885)
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/584ca53e-85e4-4a18-94f3-eede33927888)
 
 ### Remapping 
+Reassigning the name of our /turtlesim node.
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/b3eb342b-0493-4923-9760-3f54de280eca)
 
 ### ros2 node info
+Accessing more information about nodes.
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/00af2822-c73c-467b-a22e-363d691fe814)
 
 ## Understanding topics
 ### rqt_graph
+Visualizing the changing nodes, topics, and the connections between them.
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/38f7a0ce-6ce4-457a-bc03-54e6c5eab2c3)
 
 ### ros2 topic list
+Listing all the topics currently active in the system.
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/20537c2d-b6cb-4ea3-8b8f-0410ddda2842)
 
 ### ros2 topic echo
+Seeing the data being published on a topic.
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/b8a339c4-d8e0-435d-970e-89e6df51acd0)
 
 ### ros2 topic info
+Looking topics.
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/2a6872d3-99b8-40a9-89a3-a166b246aa41)
 
 ### ros2 interface show
+Learning details of messages.
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/fef5eec9-afb5-4676-8aa9-5eae85885a21)
 
 ### ros2 topic pub
+Publishing data onto a topic directly
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/ee78aeed-7a6a-488f-99c8-f40863b18ae7)
 
 ## Understanding services
 ### ros2 service list
+Listing all the services currently active in the system.
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/13bc0357-abbf-4226-bcd5-9b7e698eb59a)
 
 ### ros2 service type
+Finding out the type of services.
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/65dd5d81-abe7-4e4b-af6a-e4879b467cb8)
 
 ### ros2 service list -t
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/efe74636-f4d9-41a9-8def-348dd40c5ce2)
 
 ### ros2 service find 
+Finding services of a specific type.
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/ff035d47-cde3-4efe-b47c-3599ff86a84f)
 
 ### ros2 interface show 
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/ccd12afc-a9d9-482b-b5f9-93a9ce0cd6d1)
 
 ### ros2 service call
+Calling a service.
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/96cf4b78-b08b-4501-abfe-04824136b152)
 
 ## Understanding parameters
 ### ros2 param list
+
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/3199f87d-a033-4ebe-9ca0-565b12a80347)
 
 ### ros2 param get
