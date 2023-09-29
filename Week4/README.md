@@ -2,19 +2,25 @@
 
 ## Using turtlesim, ros2, and rqt
 ### Starting turtlesim
+Starting the turtlesim simulator.
+
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/9f59f63c-d743-43d5-86fd-4d83d24a516f)
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/afc19565-fabb-4ed2-9301-13bb772724a9)
 
 ### Using turtlesim
+Running a node to control the turtle in the simulator.
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/7892ecd1-2006-4994-bf34-dcecc2a11632)
 
 ### Using rqt
+rqt is a graphical user interface (GUI) tool for ROS 2. Everything done in rqt can be done on the command line, but rqt provides a more user-friendly way to manipulate ROS 2 elements.
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/06a68a95-0d85-46f1-99fb-b59ad2a0733d)
 
 ### Trying the spawn service
+/spawn will create another turtle in the turtlesim window.
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/4288e874-69be-4ff3-8737-560e05148cf3)
 
 ### Trying the set_pen service
+The values for r, g and b, which are between 0 and 255, set the color of the pen turtle1 draws with, and width sets the thickness of the line.
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/a8ffd85f-e9e4-47ba-8fb7-d2e988893145)
 
 ### Remapping
