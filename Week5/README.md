@@ -186,4 +186,126 @@ Open another terminal and run the action client:
 source ~/ros2_ws/install/setup.bash
 ros2 run action_tutorials_cpp fibonacci_action_client
 ```
-You should see logged messages indicating the goal being accepted, feedback being printed, and the final result.
+You should see logged messages indicating the goal being accepted, the feedback being printed, and the final result.
+
+## Composing multiple nodes in a single process
+### Discover Available Components
+
+Objective: View a list of registered components in your workspace.
+
+Instructions:
+
+Open a terminal.
+
+Run the following command to see a list of available components:
+
+    ros2 component types
+
+The terminal will display a list of available components from various packages.
+
+### Run-time Composition with Publisher and Subscriber
+
+Objective: Demonstrate run-time composition using ROS services with a publisher and subscriber.
+
+Instructions:
+Open two terminals.
+
+In the first terminal, start the component container:
+```
+ros2 run rclcpp_components component_container
+```
+In the second terminal, verify that the container is running:
+```
+ros2 component list
+```
+You should see a component named /ComponentManager.
+
+In the second terminal, load the talker component:
+
+```
+ros2 component load /ComponentManager composition composition::Talker
+```
+The command will return a unique ID for the loaded component and its node name.
+
+The first terminal should now display messages indicating that the component was loaded and is publishing messages.
+
+In the second terminal, load the listener component:
+
+```
+
+    ros2 component load /ComponentManager composition composition::Listener
+```
+Terminal will return information about the loaded component.
+
+Use the ros2 component list command in the second terminal to verify that both components are loaded.
+
+The first terminal should now display messages indicating that the listener is receiving messages from the talker.
+
+### Run-time Composition with Server and Client
+
+Objective: Demonstrate run-time composition using ROS services with a server and client.
+
+Instructions:
+
+Open two terminals.
+
+In the first terminal, start the component container:
+
+```
+ros2 run rclcpp_components component_container
+```
+In the second terminal, load the server and client components:
+
+```
+
+    ros2 component load /ComponentManager composition composition::Server
+    ros2 component load /ComponentManager composition composition::Client
+```
+In this scenario, the client sends a request to the server, and the server processes the request and replies with a response. The client terminal will display the received response.
+
+### Compile-time Composition using ROS Services
+
+Objective: Demonstrate compile-time composition using ROS services.
+
+Instructions:
+
+Open a terminal.
+
+Run the following command to run the demo:
+
+```
+
+    ros2 run composition manual_composition
+```
+This will show repeated messages from both pairs: the talker and the listener, as well as the server and the client.
+
+Note: Manually-composed components will not be reflected in the ros2 component list command line tool output.
+
+### Run-time Composition using dlopen
+
+Objective: Demonstrate run-time composition using dlopen.
+
+Instructions:
+
+Open a terminal.
+
+Run the following command to execute the demo:
+```
+    ros2 run composition dlopen_composition `ros2 pkg prefix composition`/lib/libtalker_component.so `ros2 pkg prefix composition`/lib/liblistener_component.so
+```
+The terminal should display repeated output for each sent and received message.
+
+Note: dlopen-composed components will not be reflected in the ros2 component list command line tool output.
+
+### Composition using Launch Actions
+
+Objective: Demonstrate composition using launch actions.
+
+Instructions:
+
+Open a terminal.
+
+Run the following command to use a launch file for composition:
+```
+ros2 launch composition composition_demo.launch.py
+```
