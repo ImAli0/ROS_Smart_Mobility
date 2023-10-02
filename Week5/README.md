@@ -135,3 +135,55 @@ ros2 interface show action_tutorials_interfaces/action/Fibonacci
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/6298c001-7370-4d54-9a47-65b05f2a5931)
 
 With these steps, you have defined and built a custom ROS 2 action for computing the Fibonacci sequence. You can now use this action in your ROS 2 projects.
+
+## Writing an action server and client (C++)
+### Creating the action_tutorials_cpp package
+
+To create the action_tutorials_cpp package for the C++ action server and client, follow these steps:
+
+```
+
+cd ~/ros2_ws/src
+ros2 pkg create --dependencies action_tutorials_interfaces rclcpp rclcpp_action rclcpp_components -- action_tutorials_cpp
+```
+This command will create a new package with the necessary dependencies.
+### Writing an action server
+
+In this step, we'll focus on writing the action server. The action server will calculate the Fibonacci sequence based on the action we created earlier. Follow these steps:
+
+Open the file action_tutorials_cpp/include/action_tutorials_cpp/visibility_control.h and add the provided visibility control code. This step ensures proper visibility control for Windows.
+
+Create the action server code in the file action_tutorials_cpp/src/fibonacci_action_server.cpp using the provided code.
+
+### Writing an action client
+
+In this step, we'll write the action client. The action client will send goal requests to the action server to calculate the Fibonacci sequence. Follow these steps:
+
+Create the action client code in the file action_tutorials_cpp/src/fibonacci_action_client.cpp using the provided code.
+
+Building and Running
+
+To compile and run the action server and client, follow these steps:
+
+Build the ROS 2 workspace:
+
+```
+
+cd ~/ros2_ws
+colcon build
+```
+Start the action server in a separate terminal:
+
+```
+
+source ~/ros2_ws/install/setup.bash
+ros2 run action_tutorials_cpp fibonacci_action_server
+```
+Open another terminal and run the action client:
+
+```
+
+source ~/ros2_ws/install/setup.bash
+ros2 run action_tutorials_cpp fibonacci_action_client
+```
+You should see logged messages indicating the goal being accepted, feedback being printed, and the final result.
