@@ -85,3 +85,75 @@ ros2 topic echo /statistics
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/3a87caa6-cd81-4606-8e69-d3f4e6ef1e8d)
 
 The terminal will start displaying statistics messages every 10 seconds, as specified in the code.
+
+# Using Fast DDS Discovery Server as discovery protocol
+## Running the Talker-Listener ROS 2 Demo
+The talker-listener ROS 2 demo consists of a talker node that publishes a "hello world" message every second and a listener node that subscribes to these messages. To set up and run this demo, follow the steps below.
+## Setup Discovery Server
+Start by launching a discovery server with id 0, default port 11811, and listening on all available interfaces. Open a new terminal and run:
+    
+```
+fastdds discovery --server-id 0
+```
+## Launch Listener Node
+Execute the listener demo, which listens to the /chatter topic. In a new terminal, set the environment variable ROS_DISCOVERY_SERVER to the location of the discovery server. Ensure you've sourced ROS 2 in every new terminal:
+```
+export ROS_DISCOVERY_SERVER=127.0.0.1:11811
+ros2 run demo_nodes_cpp listener --ros-args --remap __node:=listener_discovery_server
+```
+This command will create a ROS 2 node that automatically creates a client for the discovery server to perform discovery.
+
+## Launch Talker Node
+
+Open a new terminal and set the ROS_DISCOVERY_SERVER environment variable as before to enable the node to start a discovery client:
+
+```
+export ROS_DISCOVERY_SERVER=127.0.0.1:11811
+ros2 run demo_nodes_cpp talker --ros-args --remap __node:=talker_discovery_server
+```
+You should now see the talker node publishing "hello world" messages, and the listener node receiving these messages.
+
+## Demonstrate Discovery Server Execution
+To demonstrate that the Discovery Server is working differently from the standard talker-listener example, run another node that is not connected to the discovery server. Start a new listener (listening on the /chatter topic by default) in a new terminal and check that it is not connected to the talker already running:
+```
+ros2 run demo_nodes_cpp listener --ros-args --remap __node:=simple_listener
+```
+The new listener node should not be receiving the "hello world" messages.
+
+Finally, create a new talker using the simple discovery protocol (the default DDS distributed discovery mechanism) for discovery:
+```
+ros2 run demo_nodes_cpp talker --ros-args --remap __node:=simple_talker
+```
+Now, you should see the simple_listener node receiving "hello world" messages from simple_talker but not from talker_discovery_server.
+
+## Visualization Tool rqt_graph
+
+The rqt_graph tool can be used to verify the nodes and structure of this example. To see the listener_discovery_server and talker_discovery_server nodes, set the ROS_DISCOVERY_SERVER environment variable before launching it.
+## Advanced Use Cases
+
+The following sections explore advanced features of the Discovery Server to create more robust network configurations and optimize ROS 2 introspection tools.
+### Server Redundancy
+
+By using the fastdds tool, multiple discovery servers can be created. Discovery clients (ROS nodes) can connect to as many servers as desired, allowing for a redundant network that remains functional even if some servers or nodes shut down unexpectedly.
+### Backup Server
+
+The Fast DDS Discovery Server supports creating a server with backup functionality. This allows the server to restore its last state in case of a shutdown, preventing the need for a complete rediscovery process and data loss.
+### Discovery Partitions
+
+Communication with discovery servers can be split to create virtual partitions in the discovery information. This means that two endpoints will only know about each other if there is a shared discovery server or a network of discovery servers between them.
+### ROS 2 Introspection
+
+The ROS 2 Command Line Interface supports introspection tools to analyze the behavior of a ROS 2 network. Some tools, like ros2 bag record, ros2 topic list, and more, benefit from the Discovery Server's capabilities. This section explains how to configure ROS 2 introspection tools to work effectively with the Discovery Server.
+Daemon's Related Tools
+
+The ROS 2 Daemon is used in several ROS 2 CLI introspection tools. To use these tools with the Discovery Server mechanism, configure the ROS 2 Daemon as a Super Client.
+No Daemon Tools
+
+Some ROS 2 CLI tools do not use the ROS 2 Daemon. To connect these tools with a Discovery Server and receive all topics' information, instantiate them as Super Clients.
+### Compare Fast DDS Discovery Server with Simple Discovery Protocol
+
+For advanced users who wish to compare nodes running with the Discovery Server against the default Simple Discovery Protocol, scripts are provided to generate network traffic traces and graphs. These scripts require tshark to be installed on your system.
+
+For detailed instructions on running these comparisons, refer to the respective sections in the documentation.
+
+These advanced features and scenarios demonstrate the power and flexibility of the ROS 2 Discovery Server for managing and optimizing ROS 2 network communication.
