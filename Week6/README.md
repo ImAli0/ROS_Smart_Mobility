@@ -95,6 +95,8 @@ Start by launching a discovery server with id 0, default port 11811, and listeni
 ```
 fastdds discovery --server-id 0
 ```
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/a9ddbaa3-c215-49ce-b218-3696670008ac)
+
 ## Launch Listener Node
 Execute the listener demo, which listens to the /chatter topic. In a new terminal, set the environment variable ROS_DISCOVERY_SERVER to the location of the discovery server. Ensure you've sourced ROS 2 in every new terminal:
 ```
@@ -111,6 +113,8 @@ Open a new terminal and set the ROS_DISCOVERY_SERVER environment variable as bef
 export ROS_DISCOVERY_SERVER=127.0.0.1:11811
 ros2 run demo_nodes_cpp talker --ros-args --remap __node:=talker_discovery_server
 ```
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/42d1f213-1175-4834-91ad-82ad94d23802)
+
 You should now see the talker node publishing "hello world" messages, and the listener node receiving these messages.
 
 ## Demonstrate Discovery Server Execution
@@ -124,6 +128,9 @@ Finally, create a new talker using the simple discovery protocol (the default DD
 ```
 ros2 run demo_nodes_cpp talker --ros-args --remap __node:=simple_talker
 ```
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/7973e997-32ae-4f2a-9cbc-956a365b2b28)
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/8ae077ef-a731-4d86-99da-f415cf2f2842)
+
 Now, you should see the simple_listener node receiving "hello world" messages from simple_talker but not from talker_discovery_server.
 
 ## Visualization Tool rqt_graph
