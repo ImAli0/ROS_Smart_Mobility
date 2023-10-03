@@ -1,4 +1,4 @@
-# ROS 2 C++ Subscriber with Topic Statistics (Advanced)
+# Enabling Topic Statistics (Advanced)
 
 This README provides instructions on how to set up and run a ROS 2 C++ subscriber with topic statistics in the `cpp_pubsub` package. This allows you to enable topic statistics for a subscriber node, view the statistics data, and analyze the performance of your ROS 2 system.
 
