@@ -142,12 +142,24 @@ The following sections explore advanced features of the Discovery Server to crea
 ### Server Redundancy
 
 By using the fastdds tool, multiple discovery servers can be created. Discovery clients (ROS nodes) can connect to as many servers as desired, allowing for a redundant network that remains functional even if some servers or nodes shut down unexpectedly.
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/2649e20a-ffe3-49b9-bf99-4a942a7d9be6)
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/6aa4a103-ed2f-4722-b393-23a7f79a1c92)
+
 ### Backup Server
 
 The Fast DDS Discovery Server supports creating a server with backup functionality. This allows the server to restore its last state in case of a shutdown, preventing the need for a complete rediscovery process and data loss.
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/866a117f-f919-4dd8-acf1-75a276821aac)
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/82f105f9-5910-4846-a84d-c0b8ec276d89)
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/6034ff44-7927-4858-8ea1-23c77c426e36)
+
 ### Discovery Partitions
 
 Communication with discovery servers can be split to create virtual partitions in the discovery information. This means that two endpoints will only know about each other if there is a shared discovery server or a network of discovery servers between them.
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/53e398ec-27f0-4967-a352-2c0db2e03ef1)
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/fa6b940e-8009-4731-ad76-09169a861977)
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/fdcccf00-9b1d-48bb-9db6-3ddca6bce885)
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/c5ddd9b2-6f2a-4c12-b5f7-393c712f31fa)
+
 ### ROS 2 Introspection
 
 The ROS 2 Command Line Interface supports introspection tools to analyze the behavior of a ROS 2 network. Some tools, like ros2 bag record, ros2 topic list, and more, benefit from the Discovery Server's capabilities. This section explains how to configure ROS 2 introspection tools to work effectively with the Discovery Server.
