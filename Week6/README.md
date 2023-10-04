@@ -179,3 +179,78 @@ For advanced users who wish to compare nodes running with the Discovery Server a
 For detailed instructions on running these comparisons, refer to the respective sections in the documentation.
 
 These advanced features and scenarios demonstrate the power and flexibility of the ROS 2 Discovery Server for managing and optimizing ROS 2 network communication.
+
+# Implementing a custom memory allocator
+## Writing the Custom Allocator
+
+Start by creating a custom allocator. Here's a basic example of what the structure of a custom allocator might look like:
+```
+template <class T>
+struct custom_allocator {
+  using value_type = T;
+
+  custom_allocator() noexcept;
+  template <class U> custom_allocator(const custom_allocator<U>&) noexcept;
+
+  T* allocate(std::size_t n);
+  void deallocate(T* p, std::size_t n);
+};
+
+template <class T, class U>
+constexpr bool operator==(const custom_allocator<T>&, const custom_allocator<U>&) noexcept;
+
+template <class T, class U>
+constexpr bool operator!=(const custom_allocator<T>&, const custom_allocator<U>&) noexcept;
+```
+Implement your custom allocator logic within the functions like allocate and deallocate. Customize it according to your specific memory management needs.
+
+Save your custom allocator code in a .cpp or .h file, depending on your project structure.
+
+## Usage
+
+Now that you've implemented your custom allocator, you can use it in your ROS 2 project. Here's an example of how to use it:
+
+Include your custom allocator header in your ROS 2 C++ source files.
+
+Instantiate your custom allocator and use it for memory allocation and deallocation, similar to how you would use the standard allocator:
+```
+#include "custom_allocator.h"
+
+int main() {
+  // Instantiate your custom allocator
+  custom_allocator<int> my_allocator;
+
+  // Use your allocator to allocate memory
+  int* my_memory = my_allocator.allocate(5);
+
+  // Use the allocated memory
+
+  // Deallocate the memory when done
+  my_allocator.deallocate(my_memory, 5);
+
+  return 0;
+}
+```
+## Testing
+
+To test your custom allocator, follow these steps:
+
+Compile your ROS 2 project, including the custom allocator code.
+
+Run your ROS 2 application. During execution, your custom allocator will be used for memory allocation and deallocation.
+
+Monitor the behavior of your custom allocator to ensure it meets your memory management requirements.
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/368cce69-6259-4e9a-b5f2-7f843feba513)
+
+## Passing an Allocator to the Intra-Process Pipeline
+
+If you need to use your custom allocator within the ROS 2 intra-process communication pipeline, you can pass it to your ROS nodes and components as demonstrated in the code examples in your original documentation.
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/115a7b50-8512-42a7-948b-19789e01c4fa)
+
+## Additional Notes
+
+Some compilers with partial C++11 support may require additional boilerplate code when working with standard library structures. Adjust your allocator implementation accordingly if needed.
+
+Be aware that certain memory allocations and deallocations may originate in the underlying DDS (Data Distribution Service) implementation used by ROS 2.
+
+Now you have the knowledge to create and use a custom allocator compatible with ROS 2. Customize your allocator to meet the specific memory management needs of your ROS 2 projects.
