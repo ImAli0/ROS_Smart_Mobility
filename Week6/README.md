@@ -167,6 +167,9 @@ Daemon's Related Tools
 
 The ROS 2 Daemon is used in several ROS 2 CLI introspection tools. To use these tools with the Discovery Server mechanism, configure the ROS 2 Daemon as a Super Client.
 No Daemon Tools
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/4a110d57-8a98-47d6-90d3-52e0d1a58aa5)
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/9c36821c-c99f-4f1b-9c1b-9a3710344027)
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/ae98ab11-5b0f-4499-8bda-a29db3b11d15)
 
 Some ROS 2 CLI tools do not use the ROS 2 Daemon. To connect these tools with a Discovery Server and receive all topics' information, instantiate them as Super Clients.
 ### Compare Fast DDS Discovery Server with Simple Discovery Protocol
