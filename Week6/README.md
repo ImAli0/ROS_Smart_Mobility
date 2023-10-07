@@ -254,3 +254,187 @@ Some compilers with partial C++11 support may require additional boilerplate cod
 Be aware that certain memory allocations and deallocations may originate in the underlying DDS (Data Distribution Service) implementation used by ROS 2.
 
 Now you have the knowledge to create and use a custom allocator compatible with ROS 2. Customize your allocator to meet the specific memory management needs of your ROS 2 projects.
+
+# Unlocking the potential of Fast DDS middleware [community-contributed]
+## Mixing Synchronous and Asynchronous Publications in the Same Node
+In this example, we demonstrate how to create a ROS 2 node with two publishers, one using synchronous publication mode, and the other using asynchronous publication mode.
+By default, rmw_fastrtps uses synchronous publication mode.
+### Synchronous Publication Mode
+In synchronous publication mode, data is sent directly within the context of the user thread. This means that any blocking call during the write operation will block the user thread, potentially preventing the application from continuing its operation. However, this mode typically offers higher throughput rates and lower latencies since there's no notification or context switching between threads.
+### Asynchronous Publication Mode
+In asynchronous publication mode, when the publisher invokes the write operation, the data is copied into a queue. A background thread (asynchronous thread) is notified about the addition to the queue, and control of the thread is returned to the user before the data is actually sent. The background thread is responsible for consuming the queue and sending the data to every matched reader.
+
+Let's create a ROS 2 node with both synchronous and asynchronous publishers.
+### Create the Node with the Publishers
+#### 1. Create a New Package
+First, create a new package named sync_async_node_example_cpp within a new workspace:
+```
+mkdir -p ~/ros2_ws/src
+cd ~/ros2_ws/src
+ros2 pkg create --build-type ament_cmake --dependencies rclcpp std_msgs -- sync_async_node_example_cpp
+```
+#### 2. Add Source File for the Node 
+Add a file named src/sync_async_writer.cpp to the package with the following content:
+```
+// Include necessary headers
+#include <chrono>
+#include <functional>
+#include <memory>
+#include <string>
+#include "rclcpp/rclcpp.hpp"
+#include "std_msgs/msg/string.hpp"
+
+using namespace std::chrono_literals;
+
+class SyncAsyncPublisher : public rclcpp::Node
+{
+public:
+    SyncAsyncPublisher()
+        : Node("sync_async_publisher"), count_(0)
+    {
+        // Create the synchronous publisher on topic 'sync_topic'
+        sync_publisher_ = this->create_publisher<std_msgs::msg::String>("sync_topic", 10);
+
+        // Create the asynchronous publisher on topic 'async_topic'
+        async_publisher_ = this->create_publisher<std_msgs::msg::String>("async_topic", 10);
+
+        // This timer will trigger the publication of new data every half a second
+        timer_ = this->create_wall_timer(
+                500ms, std::bind(&SyncAsyncPublisher::timer_callback, this));
+    }
+
+private:
+    void timer_callback()
+    {
+        // Create a new message to be sent
+        auto sync_message = std_msgs::msg::String();
+        sync_message.data = "SYNC: Hello, world! " + std::to_string(count_);
+
+        // Log the message to the console to show progress
+        RCLCPP_INFO(this->get_logger(), "Synchronously publishing: '%s'", sync_message.data.c_str());
+
+        // Publish the message using the synchronous publisher
+        sync_publisher_->publish(sync_message);
+
+        // Create a new message to be sent
+        auto async_message = std_msgs::msg::String();
+        async_message.data = "ASYNC: Hello, world! " + std::to_string(count_);
+
+        // Log the message to the console to show progress
+        RCLCPP_INFO(this->get_logger(), "Asynchronously publishing: '%s'", async_message.data.c_str());
+
+        // Publish the message using the asynchronous publisher
+        async_publisher_->publish(async_message);
+
+        // Prepare the count for the next message
+        count_++;
+    }
+
+    rclcpp::TimerBase::SharedPtr timer_;
+    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr async_publisher_;
+    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr sync_publisher_;
+    size_t count_;
+};
+
+int main(int argc, char * argv[])
+{
+    rclcpp::init(argc, argv);
+    rclcpp::spin(std::make_shared<SyncAsyncPublisher>());
+    rclcpp::shutdown();
+    return 0;
+}
+```
+#### 3. Modify CMakeLists.txt
+Open the CMakeLists.txt file and add the new executable for SyncAsyncWriter so you can run the node using ros2 run:
+```
+add_executable(SyncAsyncWriter src/sync_async_writer.cpp)
+ament_target_dependencies(SyncAsyncWriter rclcpp std_msgs)
+
+install(TARGETS
+    SyncAsyncWriter
+    DESTINATION lib/${PROJECT_NAME})
+```
+Clean up the CMakeLists.txt file by removing unnecessary sections and comments, so it looks like this:
+```
+cmake_minimum_required(VERSION 3.8)
+project(sync_async_node_example_cpp)
+
+# Default to C++14
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 14)
+endif()
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
+
+add_executable(SyncAsyncWriter src/sync_async_writer.cpp)
+ament_target_dependencies(SyncAsyncWriter rclcpp std_msgs)
+
+install(TARGETS
+    SyncAsyncWriter
+    DESTINATION lib/${PROJECT_NAME})
+
+ament_package()
+```
+#### 4. Build the Package 
+Now build the package:
+```
+cd ~/ros2_ws
+colcon build --packages-select sync_async_node_example_cpp
+```
+This concludes the setup for the node with publishers.
+### Create the XML Configuration File
+Create a file named SyncAsync.xml with the following content:
+<?xml version="1.0" encoding="UTF-8" ?>
+<profiles xmlns="http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles">
+
+    <!-- Default publisher profile -->
+    <publisher profile_name="default_publisher" is_default_profile="true">
+        <historyMemoryPolicy>DYNAMIC</historyMemoryPolicy>
+    </publisher>
+
+    <!-- Default subscriber profile -->
+    <subscriber profile_name="default_subscriber" is_default_profile="true">
+        <historyMemoryPolicy>DYNAMIC</historyMemoryPolicy>
+    </subscriber>
+
+    <!-- Publisher profile for topic sync_topic -->
+    <publisher profile_name="/sync_topic">
+        <historyMemoryPolicy>DYNAMIC</historyMemoryPolicy>
+        <qos>
+            <publishMode>
+                <kind>SYNCHRONOUS</kind>
+            </publishMode>
+        </qos>
+    </publisher>
+
+    <!-- Publisher profile for topic async_topic -->
+    <publisher profile_name="/async_topic">
+        <historyMemoryPolicy>DYNAMIC</historyMemoryPolicy>
+        <qos>
+            <publishMode>
+                <kind>ASYNCHRONOUS</kind>
+            </publishMode>
+        </qos>
+    </publisher>
+
+ </profiles>
+
+This XML configuration file defines several profiles for publishers and subscribers, including profiles for both synchronous and asynchronous publishers for the topics sync_topic and async_topic.
+### Execute the Publisher Node
+Before running the publisher node, export the required environment variables for the XML configuration to be loaded:
+```
+export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+export RMW_FASTRTPS_USE_QOS_FROM_XML=1
+export FASTRTPS_DEFAULT_PROFILES_FILE=path/to/SyncAsync.xml
+```
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/68b36c87-21b0-4e14-9958-f8e0760b4d39)
+### Execute the subscriber node
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/39c31a25-6653-476b-a43d-44ecbca70987)
+
+
