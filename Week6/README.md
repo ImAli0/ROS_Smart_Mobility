@@ -435,6 +435,21 @@ export FASTRTPS_DEFAULT_PROFILES_FILE=path/to/SyncAsync.xml
 ```
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/68b36c87-21b0-4e14-9958-f8e0760b4d39)
 ### Execute the subscriber node
+Export the required environment variables for the XML to be loaded:
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/39c31a25-6653-476b-a43d-44ecbca70987)
 
+## Using other FastDDS capabilities with XML
+### Limiting the number of matching subscribers
+Add a maximum number of matched subscribers to the /async_topic publisher profile. It should look like this:
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/083591b1-101e-48fa-8b87-e64c6b7bfd04)
+
+You should see that only the first subscriber node receives the messages from both topics. The second one could not complete the matching process in the /async_topic because the publisher prevented it, as it had already reached its maximum of matched publishers. Consequently, only the messages from the /sync_topic are going to be received in this third terminal:
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/8e86f208-5380-4670-8c28-6116bbf5fbc8)
+### Using partitions within the topic
+Let us change the /sync_topic publisher to partition part1 and create a new /sync_topic subscriber which uses partition part2. Their profiles should now look like this:
+
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/b20fe47b-155c-47d6-a09a-3a053ae38cc1)
+
+The /sync_topic subscriber is not receiving the data as it is in a different partition from the corresponding publisher.
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/d5d947bf-dcde-411f-a69a-27cfd70523c4)
 
