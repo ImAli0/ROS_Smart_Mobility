@@ -453,3 +453,37 @@ Let us change the /sync_topic publisher to partition part1 and create a new /syn
 The /sync_topic subscriber is not receiving the data as it is in a different partition from the corresponding publisher.
 ![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/d5d947bf-dcde-411f-a69a-27cfd70523c4)
 
+## Recording a bag from a node (C++)
+Before starting this tutorial, make sure you have the following prerequisites:
+ROS 2 installed as part of your regular ROS 2 setup.
+If you've installed ROS 2 from Debian packages on Linux, the rosbag2 tool may be installed by default. If not, you can install it using the following command:
+```
+sudo apt install ros-humble-rosbag2
+```
+### Create a ROS2 Package
+In this task, you will create a ROS 2 package called bag_recorder_nodes that contains nodes for recording and playing back data. Follow these steps:
+```
+ros2 pkg create --build-type ament_cmake bag_recorder_nodes --dependencies example_interfaces rclcpp rosbag2_cpp std_msgs
+```
+### Write a C++ Node
+In this task, you will write a C++ node called simple_bag_recorder that subscribes to a topic, receives data, and saves it to a bag file. Follow these steps:
+
+Inside the ros2_ws/src/bag_recorder_nodes/src directory, create a new file called simple_bag_recorder.cpp and paste the provided C++ code into it.
+
+The code in simple_bag_recorder.cpp sets up a node that subscribes to a topic, receives data, and writes it to a bag file. The code is well-documented to explain its functionality.
+
+Pay attention to the dependencies included at the top of the file. These are necessary for interacting with ROS 2 and working with bag files.
+
+The class SimpleBagRecorder represents the node. It sets up a writer for the bag file, subscribes to the "chatter" topic, and defines a callback for incoming data.
+
+The main function initializes the ROS 2 context, spins the node, and shuts down when finished.
+ Update package.xml
+
+You don't need to manually add dependencies to package.xml or CMakeLists.txt because the --dependencies argument was used during package creation. However, make sure to update the package description, maintainer email and name, and license information in package.xml:
+
+### Update package.xml
+You don't need to manually add dependencies to package.xml or CMakeLists.txt because the --dependencies argument was used during package creation. However, make sure to update the package description, maintainer email and name, and license information in package.xml:
+
+
+
+
