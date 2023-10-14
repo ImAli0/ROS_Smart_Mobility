@@ -1,4 +1,5 @@
-# Application Description
+# Image Processing(Edge Detection)
+## Application Description
 ## Project Overview
 The project aims to demonstrate a ROS 2 application for performing computer vision tasks using an action server-
 client paradigm. The action server will perform a simple image processing task, such as edge detection, and the
