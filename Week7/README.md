@@ -9,7 +9,7 @@ client will request the server to process an image.
 detection.
 2. SM_image_processor_client.cpp: Action client node that sends image processing requests to the server.
 # Interaction Diagram:
-![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/306a6e58-ce52-47f8-99dd-88a0e4c1aeb4)
+![image](https://github.com/ImAli0/ROS_Smart_Mobility_Course_activities/assets/113502495/f2facc10-abb6-4ebf-b4e4-6c7ffb13a47a)
 ## File Structure
 ```
 ros2_cv_action_project/
