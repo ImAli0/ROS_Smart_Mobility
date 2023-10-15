@@ -20,6 +20,9 @@ ros2_cv_action_project/
 │-- package.xml
 │-- README.md
 ```
+In the CMakeLists.txt file, we define the dependencies on ROS 2 packages, create two executables (for the server and client), and specify where to install the executables.
+
+In the package.xml file, we specify the package name, version, and dependencies for building and running the project. You should replace your_email@example.com and Your Name with your actual contact information.
 # Build the Project
 ```
 colcon build --packages-select ros2_cv_action_project
