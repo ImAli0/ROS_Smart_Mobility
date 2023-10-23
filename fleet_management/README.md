@@ -78,9 +78,9 @@ Scenario 1: Local Delivery Service
 Expected Output: Vehicle routes optimized for local deliveries.
     Goal Description: Your goal is to manage a local delivery service with a fleet of vehicles. You want to allocate and route vehicles for delivering packages to customers within a city.
 
-    Fleet Size: 10 vehicles
+Fleet Size: 10 vehicles
 
-    Expected Output (Vehicle Routes):
+Expected Output (Vehicle Routes):
         Vehicle 1: Start at the warehouse, deliver to Customer A, Customer B, and return to the warehouse.
         Vehicle 2: Start at the warehouse, deliver to Customer C, Customer D, and return to the warehouse.
         Vehicle 3: Start at the warehouse, deliver to Customer E, Customer F, and return to the warehouse.
@@ -94,14 +94,13 @@ Expected Output: Vehicle routes optimized for local deliveries.
 
 Scenario 2: Ride-Sharing Service
 
-    Fleet Size: 5 vehicles
+Fleet Size: 5 vehicles
 
 Expected Output: Routes optimized for ride-sharing services.
     Goal Description: You are managing a ride-sharing service in a busy urban area. Your goal is to allocate and route vehicles to pick up passengers and drop them off at their destinations efficiently.
 
-    Fleet Size: 5 vehicles
 
-    Expected Output (Vehicle Routes):
+Expected Output (Vehicle Routes):
         Vehicle 1: Start at the central hub, pick up Passenger A, drop off at Location X, and return to the central hub.
         Vehicle 2: Start at the central hub, pick up Passenger B, drop off at Location Y, and return to the central hub.
         Vehicle 3: Start at the central hub, pick up Passenger C, drop off at Location Z, and return to the central hub.
