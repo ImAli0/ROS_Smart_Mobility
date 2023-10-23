@@ -1,0 +1,11 @@
+# FleetManagement.action
+
+# Define the Action Goal
+int32 fleet_size
+---
+# Define the Action Result
+string[] vehicle_routes
+---
+# Define the Action Feedback
+float32 completion_percentage
+
