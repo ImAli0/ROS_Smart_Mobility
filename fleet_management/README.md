@@ -14,14 +14,7 @@ The fleet management package is suitable for a variety of use cases, including:
 - Logistics and transportation companies
 - Emergency services
 
-## Installation
 
-To use this package, you need to have ROS 2 installed on your system. Follow the official ROS 2 installation instructions for your platform.
-
-```bash
-# Clone the repository
-git clone https://github.com/your_username/fleet_management.git
-```
 
 # Navigate to your ROS 2 workspace
 ```
